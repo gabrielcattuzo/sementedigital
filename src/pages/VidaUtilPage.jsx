@@ -4,9 +4,15 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Battery, Clock, Wrench, RefreshCw } from 'lucide-react';
+import { Battery, Clock, Wrench, RefreshCw, Smartphone, TrendingUp } from 'lucide-react';
 
 const VidaUtilPage = () => {
+    const stats = [
+    { value: '2.8 Anos', label: 'Vida útil média de um smartphone na Europa', source: 'European Environmental Bureau', icon: Smartphone },
+    { value: '80%', label: 'Do impacto ambiental de um smartphone é gerado na fabricação', source: 'European Environmental Bureau', icon: TrendingUp },
+    { value: '30kg', label: 'De matérias-primas economizadas para cada smartphone consertado', source: 'French Ministry of Ecological Transition', icon: Wrench },
+  ];
+
   return (
     <>
       <Helmet>
@@ -36,6 +42,20 @@ const VidaUtilPage = () => {
                   Maximize a durabilidade dos seus dispositivos com cuidados adequados
                 </p>
               </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                {stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <motion.div key={index} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.2, duration: 0.6 }} className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow flex flex-col">
+                      <Icon className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                      <div className="text-4xl font-bold text-purple-600 mb-2">{stat.value}</div>
+                      <div className="text-gray-700 font-semibold mb-2">{stat.label}</div>
+                      <div className="text-xs text-gray-500 mt-auto">Fonte: {stat.source}</div>
+                    </motion.div>
+                  );
+                })}
+              </div>
 
               <motion.div
                 initial={{ opacity: 0, y: 30 }}

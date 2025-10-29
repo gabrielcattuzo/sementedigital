@@ -27,7 +27,7 @@ const ReducaoAguaPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="py-20"
+            className="py-20 bg-gradient-to-br from-sky-50 to-blue-50"
           >
             <div className="container mx-auto px-4">
               <div className="text-center mb-16">
@@ -48,31 +48,27 @@ const ReducaoAguaPage = () => {
               </div>
 
               <motion.div
-                variants={{
-                  visible: { transition: { staggerChildren: 0.2 } },
-                }}
+                variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
                 initial="hidden"
                 animate="visible"
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
-                <motion.div variants={cardVariants} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8">
-                  <div className="flex items-center gap-4 mb-4">
-                    <Server className="w-8 h-8 text-blue-600" />
-                    <h2 className="text-2xl font-bold text-emerald-800">Data Centers e o Consumo de Água</h2>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    Grandes data centers, a espinha dorsal da internet, consomem enormes quantidades de água para resfriar seus servidores. A evaporação em torres de resfriamento é um dos principais métodos, mas tecnologias mais eficientes estão surgindo para mitigar esse impacto.
-                  </p>
+                <motion.div variants={cardVariants} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center">
+                  <h3 className="text-4xl font-bold text-blue-600 mb-2">1,8L</h3>
+                  <p className="font-semibold text-gray-700 mb-2">de água por kWh consumido em data centers tradicionais.</p>
+                  <p className="text-xs text-gray-500">Fonte: U.S. Department of Energy</p>
+                </motion.div>
+                
+                <motion.div variants={cardVariants} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center">
+                   <h3 className="text-4xl font-bold text-blue-600 mb-2">95%</h3>
+                  <p className="font-semibold text-gray-700 mb-2">de redução no uso de água com resfriamento líquido direto.</p>
+                  <p className="text-xs text-gray-500">Fonte: Green Grid</p>
                 </motion.div>
 
-                <motion.div variants={cardVariants} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8">
-                  <div className="flex items-center gap-4 mb-4">
-                    <Wind className="w-8 h-8 text-teal-500" />
-                    <h2 className="text-2xl font-bold text-emerald-800">Soluções Inovadoras</h2>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    Empresas estão investindo em resfriamento a ar (free cooling), resfriamento líquido direto no chip e até mesmo data centers subaquáticos. Além disso, o uso de água reciclada ou não potável é uma prática cada vez mais comum para reduzir a pressão sobre os recursos de água doce.
-                  </p>
+                <motion.div variants={cardVariants} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center md:col-span-2 lg:col-span-1">
+                  <h3 className="text-4xl font-bold text-blue-600 mb-2">20%</h3>
+                  <p className="font-semibold text-gray-700 mb-2">dos data centers do mundo estarão em áreas de estresse hídrico até 2025.</p>
+                  <p className="text-xs text-gray-500">Fonte: Uptime Institute</p>
                 </motion.div>
               </motion.div>
 
@@ -92,7 +88,6 @@ const ReducaoAguaPage = () => {
             </div>
           </motion.section>
         </main>
-
         <Footer />
       </div>
     </>

@@ -4,9 +4,15 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Leaf, Package, Recycle, CheckCircle } from 'lucide-react';
+import { Leaf, Package, Recycle, CheckCircle, Percent } from 'lucide-react';
 
 const MateriaisSustentaveisPage = () => {
+  const stats = [
+    { value: '100%', label: 'De TPE (elastômero termoplástico) reciclado em novos produtos da Apple', source: 'Apple', icon: Recycle },
+    { value: '98%', label: 'Redução do impacto climático usando alumínio reciclado', source: 'The International Aluminium Institute', icon: Percent },
+    { value: '30%', label: 'De plástico reciclado usado em novos consoles PlayStation 5', source: 'Sony', icon: Leaf },
+  ];
+
   return (
     <>
       <Helmet>
@@ -37,6 +43,20 @@ const MateriaisSustentaveisPage = () => {
                 </p>
               </motion.div>
 
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                {stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <motion.div key={index} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.2, duration: 0.6 }} className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow flex flex-col">
+                      <Icon className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                      <div className="text-4xl font-bold text-green-600 mb-2">{stat.value}</div>
+                      <div className="text-gray-700 font-semibold mb-2">{stat.label}</div>
+                      <div className="text-xs text-gray-500 mt-auto">Fonte: {stat.source}</div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -53,8 +73,8 @@ const MateriaisSustentaveisPage = () => {
                         <Leaf className="w-8 h-8 text-green-600" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">Plásticos Biodegradáveis</h3>
-                        <p className="text-gray-600">Substituição de plásticos convencionais por alternativas biodegradáveis.</p>
+                        <h3 className="text-xl font-bold text-gray-800 mb-2">Plásticos de base biológica</h3>
+                        <p className="text-gray-600">Desenvolvimento de plásticos a partir de fontes renováveis como milho e cana-de-açúcar.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -63,7 +83,7 @@ const MateriaisSustentaveisPage = () => {
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-gray-800 mb-2">Metais Reciclados</h3>
-                        <p className="text-gray-600">Uso de alumínio, cobre e outros metais reciclados na fabricação.</p>
+                        <p className="text-gray-600">Uso de alumínio, cobre e outros metais reciclados na fabricação de chassis e componentes.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -71,8 +91,8 @@ const MateriaisSustentaveisPage = () => {
                         <CheckCircle className="w-8 h-8 text-lime-600" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">Certificações Ambientais</h3>
-                        <p className="text-gray-600">Produtos certificados com selos de sustentabilidade reconhecidos.</p>
+                        <h3 className="text-xl font-bold text-gray-800 mb-2">Design para Desmontagem</h3>
+                        <p className="text-gray-600">Projetar produtos que são fáceis de desmontar, facilitando o reparo e a reciclagem de componentes.</p>
                       </div>
                     </div>
                   </div>
